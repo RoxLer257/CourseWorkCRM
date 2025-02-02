@@ -1,0 +1,57 @@
+﻿<Page x:Class="CourseWork25.Pages.Logon.Authorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork25.Pages.Logon"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="Authorization">
+    
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+
+    <Border Background="#FFFFFF">
+        <Grid>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Cursor="Hand">
+                <Grid>
+                    <TextBlock Text="Вход" HorizontalAlignment="Center" FontSize="25"
+                               FontFamily="inherit"/>
+                </Grid>
+
+                <Grid>
+                    <TextBlock Margin="35 0 10 0" VerticalAlignment="Center"
+                               Foreground="#bdbdbd" Panel.ZIndex="1"
+                               IsHitTestVisible="False" Text="Логин"
+                               Visibility="{Binding ElementName=TxtLogin, Path=Text.IsEmpty,
+                        Converter={StaticResource BoolToVis}}"/>
+                    <TextBox x:Name="TxtLogin" Margin="7 0 0 0" Style="{StaticResource Login}"/>
+                    <Icon:PackIconMaterial Kind="LoginVariant" Width="15" Margin="5"
+                                           Foreground="#c7c7c7" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid>
+                    <TextBlock Margin="35 0 10 0" VerticalAlignment="Center"
+                           Foreground="#bdbdbd" Panel.ZIndex="1" 
+                           IsHitTestVisible="False" Text="Пароль"
+                           Visibility="{Binding ElementName=TxtLogin, 
+                           Path=Text.IsEmpty, 
+                           Converter={StaticResource BoolToVis}}"/>
+                    <PasswordBox x:Name="TxtPass" Style="{StaticResource Pass}" 
+                             Margin="7 0 0 0"/>
+                    <Icon:PackIconMaterial Kind="LockOutline" Width="15" Margin="5"
+                                       Foreground="#c7c7c7" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Button Content="Войти" FontSize="14" Width="300" Name="BtnEnter"
+                    Click="BtnEnter_Click" Margin="5" Style="{StaticResource Enter}"
+                    HorizontalAlignment="Right"/>
+                <Button Width="100" x:Name="BtnReg" Click="BtnReg_Click" Margin="5"
+                    Foreground="#000000" HorizontalAlignment="Right"
+                    Style="{StaticResource LinkButton}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>
